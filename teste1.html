@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fale Conosco</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    .form-text { color: red; }
+    .contato-container {
+        width: 100%;
+        max-width: 800px;
+        margin-top: 80px;
+        padding: 20px;
+        background: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body class="bg-dark">
+  <div class="container d-flex justify-content-center">
+    <div class="contato-container">
+      <h2 class="text-center mb-4 fw-bold">FALE CONOSCO</h2>
+
+      <form method="post" action="/enviar-contato">
+        <div class="mb-3">
+          <label for="nome" class="form-label fw-semibold">Nome completo</label>
+          <input type="text" class="form-control" id="nome" name="nome" placeholder="Digite seu nome...">
+          <div id="nomeMsg" class="form-text"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="email" class="form-label fw-semibold">Email</label>
+          <input type="email" class="form-control" id="email" name="email" placeholder="Digite seu email...">
+          <div id="emailMsg" class="form-text"></div>
+        </div>
+
+        <div class="mb-3">
+          <label for="mensagem" class="form-label fw-semibold">Mensagem</label>
+          <textarea class="form-control" id="mensagem" name="mensagem" rows="4" placeholder="Digite sua mensagem..."></textarea>
+          <div id="mensagemMsg" class="form-text"></div>
+        </div>
+
+        <div class="d-grid gap-2 mt-4">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+          <button type="button" class="btn btn-secondary" onclick="window.location.href='/pagina-listar'">Ver Contatos</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const form = document.querySelector("form");
+      const nome = document.getElementById("nome");
+      const email = document.getElementById("email");
+      const mensagem = document.getElementById("mensagem");
+
+      form.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        document.querySelectorAll(".form-text").forEach(el => el.textContent = "");
+
+        if (!nome.value.trim()) {
+          document.getElementById("nomeMsg").textContent = "Digite seu nome completo.";
+          return;
+        }
+
+        if (!email.value.trim()) {
+          document.getElementById("emailMsg").textContent = "Digite seu email.";
+          return;
+        }
+
+        if (!mensagem.value.trim()) {
+          document.getElementById("mensagemMsg").textContent = "Digite sua mensagem.";
+          return;
+        }
+
+        e.target.submit();
+      });
+    });
+  </script>
+</body>
+</html>

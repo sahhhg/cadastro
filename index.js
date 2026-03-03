@@ -19,14 +19,14 @@ const paginaContato = `
         width: 100%;
         max-width: 800px;
         margin-top: 80px;
-        padding: 2rem;
+        padding: 20px;
         background: white;
         border-radius: 10px;
         box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
-<body class="bg-light">
+<body class="bg-dark">
   <div class="container d-flex justify-content-center">
     <div class="contato-container">
       <h2 class="text-center mb-4 fw-bold">FALE CONOSCO</h2>
@@ -93,7 +93,7 @@ const paginaContato = `
 </html>
 `;
 
-function gerarPaginaListar() {
+function gerarPagListar() {
   let linhas = contatos.map((c, i) => `
     <tr>
       <td>${i + 1}</td>
@@ -106,7 +106,7 @@ function gerarPaginaListar() {
   if (!linhas) {
     linhas = `
       <tr>
-        <td colspan="4" class="text-center text-muted">Nenhum contato enviado ainda.</td>
+        <td colspan="4" class="text-center text-muted">Nenhum contato enviado ainda</td>
       </tr>
     `;
   }
